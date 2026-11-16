@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="mail_template_indent_rfq" model="mail.template">
+        <field name="name">Indent RFQ (No Price)</field>
+        <field name="model_id" ref="purchase.model_purchase_order"/>
+        <field name="subject">Request for Quotation (Ref {{ object.name or 'n/a' }})</field>
+        <field name="partner_to">{{ object.partner_id.id }}</field>
+        <field name="report_template_ids" eval="[(4, ref('indent_management.action_report_indent_rfq'))]"/>
+        <field name="body_html" type="html">
+            <div style="margin: 0px; padding: 0px;">
+                <p>Dear <t t-out="object.partner_id.name or ''"/>,</p>
+                <p>
+                    Please find attached our request for quotation
+                    <strong t-out="object.name or ''"/>.
+                    Kindly reply with your price, lead time and terms for the listed quantities.
+                </p>
+                <p>Regards,<br/><t t-out="user.name or ''"/></p>
+            </div>
+        </field>
+    </record>
+</odoo>

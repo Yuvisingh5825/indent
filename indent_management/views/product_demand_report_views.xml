@@ -1,0 +1,20 @@
+<odoo>
+    <record id="view_product_demand_tree" model="ir.ui.view">
+        <field name="name">product.demand.tree</field>
+        <field name="model">indent.request.line</field>
+        <field name="arch" type="xml">
+            <list string="Product Demand">
+                <field name="product_id"/>
+                <field name="request_date"/>
+                <field name="quantity"/>
+            </list>
+        </field>
+    </record>
+
+      <record id="action_product_demand_wizard" model="ir.actions.act_window">
+        <field name="name">Product Demand</field>
+        <field name="res_model">product.demand.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

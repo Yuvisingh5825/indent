@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_indent_request_search" model="ir.ui.view">
+        <field name="name">indent.request.search</field>
+        <field name="model">indent.request</field>
+        <field name="arch" type="xml">
+            <search string="Indent Requests">
+
+                <!-- BASIC SEARCH -->
+                <field name="name" />
+                <field name="requester_id" />
+                <field name="department_id" />
+                <field name="dest_location_id" />
+
+                <separator />
+
+                <!-- STATE FILTERS -->
+                <filter name="draft"
+                    string="Draft"
+                    domain="[('state','=','draft')]" />
+
+                <filter name="submitted"
+                    string="Waiting Approval"
+                    domain="[('state','=','submitted')]" />
+
+                <filter name="approved"
+                    string="Approved"
+                    domain="[('state','=','approved')]" />
+
+                <filter name="rfq"
+                    string="RFQ Created"
+                    domain="[('state','=','rfq')]" />
+
+                <filter name="done"
+                    string="Done"
+                    domain="[('state','=','done')]" />
+
+                <separator />
+
+                <!-- ACTIVE / ARCHIVED -->
+                <filter name="active"
+                    string="Active"
+                    domain="[('active','=',True)]" />
+
+                <filter name="archived"
+                    string="Archived"
+                    domain="[('active','=',False)]" />
+
+               
+
+                <!-- <group expand="0" string="Group By">
+                    <filter string="Department" context="{'group_by':'department_id'}" />
+                    <filter string="Destination" context="{'group_by':'dest_location_id'}" />
+                </group> -->
+
+
+            </search>
+        </field>
+    </record>
+
+</odoo>

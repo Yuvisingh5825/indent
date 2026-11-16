@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- INDENT USER -->
+    <record id="group_indent_user" model="res.groups">
+        <field name="name">Indent User</field>
+    </record>
+
+    <!-- INDENT APPROVER -->
+    <record id="group_indent_approver" model="res.groups">
+        <field name="name">Indent Approver</field>
+        
+    </record>
+
+    <!-- INDENT MANAGER -->
+    <record id="group_indent_manager" model="res.groups">
+        <field name="name">Indent Manager</field>
+        
+    </record>
+
+</odoo>

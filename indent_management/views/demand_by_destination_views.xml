@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- =====================================================
+         DEMAND BY DESTINATION - LIST
+    ====================================================== -->
+    <record id="view_indent_demand_by_destination_list" model="ir.ui.view">
+    <field name="name">indent.demand.by.destination.list</field>
+    <field name="model">indent.demand.by.destination</field>
+    <field name="arch" type="xml">
+
+        <list string="Demand by Destination" delete="false" create="false" edit="false">
+            <!-- <header>
+                <button name="action_generate_destination_demand"
+                        type="object"
+                        string="Generate Demand"
+                        class="btn-primary"/>
+            </header> -->
+
+            <field name="dest_location_id"/>
+            <field name="total_demand_qty"/>
+            <field name="issued_qty"/>
+            <field name="pending_qty"/>
+            <field name="uom_id"/>
+        </list>
+
+    </field>
+</record>
+
+
+    <record id="view_indent_destination_demand_form" model="ir.ui.view">
+    <field name="name">indent.demand.by.destination.form</field>
+    <field name="model">indent.demand.by.destination</field>
+    <field name="arch" type="xml">
+        <form string="Demand by Destination" delete="false" create="false" edit="false">
+
+         
+            <sheet>
+                <group>
+                    <field name="dest_location_id"/>
+                    <field name="total_demand_qty" readonly="1"/>
+                    <field name="issued_qty" readonly="1"/>
+                    <field name="pending_qty" readonly="1"/>
+                </group>
+
+                <notebook>
+                    <page string="Products">
+                        <field name="line_ids">
+                            <list editable="bottom">
+                                <field name="product_id"/>
+                                <field name="uom_id" readonly="1"/>
+                                <field name="demand_qty"/>
+                                <field name="issued_qty"/>
+                                <field name="pending_qty" readonly="1"/>
+                            </list>
+                        </field>
+                    </page>
+                </notebook>
+            </sheet>
+
+        </form>
+    </field>
+</record>
+
+
+   
+
+    <!-- =====================================================
+         ACTIONS
+    ====================================================== -->
+   
+
+    <record id="action_indent_demand_by_destination_server" model="ir.actions.server">
+    <field name="name">Demand by Destination</field>
+    <field name="model_id" ref="model_indent_demand_by_destination"/>
+    <field name="state">code</field>
+    <field name="code">
+        action = env['indent.demand.by.destination'].action_open_demand_by_destination()
+    </field>
+    
+</record>
+
+    
+
+</odoo>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- RFQ COMPARISON
+         One row per vendor product line. Price is edited directly on the line, so it is
+         the very same price the RFQ / Purchase Order uses.
+         Send / Select Vendor act on the whole RFQ of that vendor. -->
+    <record id="view_indent_rfq_comparison_list" model="ir.ui.view">
+        <field name="name">indent.rfq.comparison.list</field>
+        <field name="model">purchase.order.line</field>
+        <field name="priority">99</field>
+        <field name="arch" type="xml">
+            <list string="RFQ Comparison" editable="bottom" create="0" delete="0"
+                  default_order="order_id, id"
+                  decoration-success="indent_is_selected"
+                  decoration-danger="indent_is_lowest and not indent_is_selected and state not in ('cancel', 'purchase')"
+                  decoration-muted="state == 'cancel'">
+                <field name="order_id" string="Order No" readonly="1"/>
+                <field name="partner_id" string="Vendor" readonly="1"/>
+                <field name="product_id" readonly="1"/>
+                <field name="product_qty" string="Qty" readonly="1"/>
+                <field name="price_unit" string="Price" readonly="state not in ('draft', 'sent')"/>
+                <field name="currency_id" column_invisible="1"/>
+                <field name="price_subtotal" string="Subtotal" readonly="1"/>
+                <field name="indent_vendor_total" readonly="1"/>
+                <field name="state" widget="badge" readonly="1"/>
+                <field name="indent_is_lowest" column_invisible="1"/>
+                <field name="indent_is_selected" column_invisible="1"/>
+                <button name="action_indent_send_rfq" type="object"
+                        string="Send" icon="fa-envelope"
+                        invisible="state not in ('draft', 'sent')"/>
+                <button name="action_select_vendor" type="object"
+                        string="Select Vendor" class="btn-primary" icon="fa-check"
+                        invisible="state not in ('draft', 'sent') or indent_is_selected"
+                        confirm="Select this vendor? This RFQ will become a Purchase Order and all other RFQs of this indent will be cancelled."/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_indent_rfq_comparison" model="ir.actions.act_window">
+        <field name="name">RFQ Comparison</field>
+        <field name="res_model">purchase.order.line</field>
+        <field name="view_mode">list</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'list', 'view_id': ref('view_indent_rfq_comparison_list')})]"/>
+    </record>
+
+</odoo>

@@ -1,0 +1,80 @@
+<odoo>
+
+    <!-- ROOT MENU -->
+    <menuitem id="menu_indent_root"
+        name="Indent Management"
+        groups="indent_management.group_indent_user" />
+
+    <!-- INDENT REQUEST -->
+    <menuitem id="menu_indent_request"
+        parent="menu_indent_root"
+        action="action_indent_request"
+        name="Indent Requests"
+        groups="indent_management.group_indent_user" />
+
+
+
+    <!-- REPORTS SUB-MENU -->
+    <!-- <menuitem id="menu_indent_reports"
+        name="Reports"
+        parent="menu_indent_root"
+        groups="indent_management.group_indent_user"
+        sequence="20" /> -->
+
+    <!-- PRODUCT DEMAND REPORT -->
+    <!-- <menuitem id="menu_product_demand_report"
+        name="Product Demand Report"
+        parent="menu_indent_reports"
+        action="action_product_demand_report"
+        groups="indent_management.group_indent_user"
+        sequence="10"/> -->
+
+         <!-- <menuitem id="menu_product_demand_report"
+              name="Product Demand Report"
+              parent="menu_indent_reports"
+              action="action_product_demand_report_wizard"
+              sequence="10"/> -->
+
+    <!-- <menuitem id="menu_indent_demand_by_destination"
+        name="Demand by Destination"
+        parent="menu_indent_reports"
+        action="action_indent_demand_by_destination_server"
+        groups="indent_management.group_indent_user"
+        sequence="20" /> -->
+
+    <!-- <menuitem
+        id="menu_quarterly_product_demand"
+        name="Quarterly Product Demand"
+        parent="menu_indent_reports"
+        action="action_product_quarterly_demand"
+        groups="indent_management.group_indent_user"
+        sequence="10" />
+
+    <menuitem id="menu_monthly_product_demand"
+        name="Monthly Product Demand"
+        parent="menu_indent_reports"
+        action="action_monthly_demand_wizard"
+        sequence="5" /> -->
+
+
+    <!-- REPORTS MENU -->
+    <menuitem id="menu_indent_reports"
+              name="Reports"
+              parent="menu_indent_root"
+              sequence="90"/>
+
+    <!-- PRODUCT DEMAND -->
+    <record id="action_product_demand_wizard" model="ir.actions.act_window">
+        <field name="name">Product Demand</field>
+        <field name="res_model">product.demand.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="menu_product_demand"
+              name="Product Demand"
+              parent="menu_indent_reports"
+              action="action_product_demand_wizard"
+              sequence="10"/>
+
+</odoo>

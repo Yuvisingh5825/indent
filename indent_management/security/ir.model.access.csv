@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_indent_request_user,indent.request.user,model_indent_request,group_indent_user,1,1,1,1
+access_indent_request_manager,indent.request.manager,model_indent_request,group_indent_manager,1,1,1,1
+access_indent_request_line_user,indent.request.line.user,model_indent_request_line,group_indent_user,1,1,1,1
+
+access_indent_demand_by_destination_user,indent.demand.by.destination.user,model_indent_demand_by_destination,group_indent_user,1,1,1,1
+access_indent_demand_by_destination_manager,indent.demand.by.destination.manager,model_indent_demand_by_destination,group_indent_manager,1,0,1,0
+access_indent_demand_by_destination_line_user,indent.destination.demand.line.user,model_indent_destination_demand_line,group_indent_user,1,0,1,0
+access_product_demand_wizard,product.demand.report.wizard,model_product_demand_wizard,base.group_user,1,1,1,1
+access_indent_reject_wizard,access_indent_reject_wizard,model_indent_reject_wizard,base.group_user,1,1,1,0
+

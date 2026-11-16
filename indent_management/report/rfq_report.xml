@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="action_report_indent_rfq" model="ir.actions.report">
+        <field name="name">RFQ (Quantity Only)</field>
+        <field name="model">purchase.order</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">indent_management.report_indent_rfq</field>
+        <field name="report_file">indent_management.report_indent_rfq</field>
+        <field name="print_report_name">'RFQ - %s' % (object.name)</field>
+        <field name="binding_model_id" eval="False"/>
+    </record>
+
+    <template id="report_indent_rfq">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>Request for Quotation <span t-field="o.name"/></h2>
+                        <div class="mb-3">
+                            <strong>Vendor:</strong> <span t-field="o.partner_id"/>
+                        </div>
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Description</th>
+                                    <th class="text-end">Qty</th>
+                                    <th>Unit</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="o.order_line" t-as="line">
+                                    <tr>
+                                        <td><span t-field="line.product_id.display_name"/></td>
+                                        <td><span t-field="line.name"/></td>
+                                        <td class="text-end"><span t-field="line.product_qty"/></td>
+                                        <td><span t-esc="line.product_id.uom_id.name"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                        <p>Please send us your best price, lead time and terms.</p>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>
