@@ -13,7 +13,7 @@ purchase order. Includes product demand and demand-by-destination reports.
     'author': 'Neemkaroli Consulting LLP',
     'website': 'https://neemkaroliconsulting.com/',
     'license': 'LGPL-3',
-    'price': 9.00,
+    'price': 29.00,
     'currency': 'EUR',
     'depends': ['base', 'mail', 'stock', 'purchase', 'hr', 'account'],
     'data': [
