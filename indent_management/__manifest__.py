@@ -1,6 +1,6 @@
 {
     'name': 'Indent Management',
-    'version': '19.0.1.0.0',
+    'version': '19.0.1.0.1',
     'category': 'Purchase',
     'summary': 'Indent Process with Approval and Procurement',
     'description': """
@@ -11,8 +11,10 @@ workflow, raise and compare RFQs, and convert the selected RFQ into a
 purchase order. Includes product demand and demand-by-destination reports.
     """,
     'author': 'Neemkaroli Consulting LLP',
-    'website': 'https://your-website.com',
+    'website': 'https://neemkaroliconsulting.com/',
     'license': 'LGPL-3',
+    'price': 29.00,
+    'currency': 'EUR',
     'depends': ['base', 'mail', 'stock', 'purchase', 'hr', 'account'],
     'data': [
         'security/security.xml',
