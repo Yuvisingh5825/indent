@@ -11,8 +11,10 @@ workflow, raise and compare RFQs, and convert the selected RFQ into a
 purchase order. Includes product demand and demand-by-destination reports.
     """,
     'author': 'Neemkaroli Consulting LLP',
-    'website': 'https://your-website.com',
+    'website': 'https://neemkaroliconsulting.com/',
     'license': 'LGPL-3',
+    'price': 2.00,
+    'currency': 'EUR',
     'depends': ['base', 'mail', 'stock', 'purchase', 'hr', 'account'],
     'data': [
         'security/security.xml',
